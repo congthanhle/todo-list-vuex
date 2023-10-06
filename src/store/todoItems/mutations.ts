@@ -17,22 +17,22 @@ const mutations: MutationTree<ItemsState> = {
   
   sortItems: (state: ItemsState, sortOption: string) => {
     switch (sortOption) {
-      case 'NameASC':
+      case 'Name-ASC':
         state.items.sort((currItem, nextItem) => {
           return currItem.name.localeCompare(nextItem.name)
         })
         break
-      case 'NameDESC':
+      case 'Name-DESC':
         state.items.sort((currItem, nextItem) => {
           return nextItem.name.localeCompare(currItem.name)
         })
         break
-      case 'LevelASC':
+      case 'Level-ASC':
         state.items.sort((currItem, nextItem) => {
           return currItem.level - nextItem.level
         })
         break
-      case 'LevelDESC':
+      case 'Level-DESC':
         state.items.sort((currItem, nextItem) => {
           return nextItem.level - currItem.level
         })

@@ -4,7 +4,8 @@ import type { Item } from '@/store/todoItems/state';
 import store from "@store/index"
 
 const props = defineProps<{
-	item: Item
+	item: Item,
+	index: number
 }>()
 
 const emits = defineEmits(["cancelEditedItem"])
@@ -33,7 +34,7 @@ const handleCancelClick = () => {
 </script>
 <template>
 	<tr>
-		<td class="text-center">{{ item.id }}</td>
+		<td class="text-center">{{ index }}</td>
 		<td>
 			<input type="text" class="form-control" v-model="formData.name" />
 		</td>

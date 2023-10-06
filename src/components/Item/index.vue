@@ -39,7 +39,7 @@ const cancelEditItem = () => {
 			<button type="button" class="btn btn-danger btn-sm" @click="handleDeleteClick">Delete</button>
 		</td>
 	</tr>
-	<ItemEdit :item="item" @cancelEditedItem="cancelEditItem" v-else />
+	<ItemEdit :item="item" :index="index" @cancelEditedItem="cancelEditItem" v-else />
 </template>
 
 <style scoped></style>

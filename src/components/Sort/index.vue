@@ -20,11 +20,11 @@ const handleSortOption = (option: string) => {
 			Sort by <span class="caret" />
 		</button>
 		<ul class="dropdown-menu">
-			<li><a @click="handleSortOption('NameASC')" role="button">Name ASC</a></li>
-			<li><a @click="handleSortOption('NameDESC')" role="button">Name DESC</a></li>
+			<li><a @click="handleSortOption('Name-ASC')" role="button">Name ASC</a></li>
+			<li><a @click="handleSortOption('Name-DESC')" role="button">Name DESC</a></li>
 			<li role="separator" class="divider" />
-			<li><a @click="handleSortOption('LevelASC')" role="button">Level ASC</a></li>
-			<li><a @click="handleSortOption('LevelDESC')" role="button">Level DESC</a></li>
+			<li><a @click="handleSortOption('Level-ASC')" role="button">Level ASC</a></li>
+			<li><a @click="handleSortOption('Level-DESC')" role="button">Level DESC</a></li>
 		</ul>
 		<span class="label label-success label-medium">{{ sortOption }}</span>
 	</div>
