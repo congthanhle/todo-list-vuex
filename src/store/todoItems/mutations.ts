@@ -9,7 +9,7 @@ const mutations: MutationTree<ItemsState> = {
   addItem: (state: ItemsState, item: Item) => {
     state.items.push(item)
   },
-  deleteItem: (state: ItemsState, id: number) => {
+  deleteItem: (state: ItemsState, id: string) => {
     state.items = state.items.filter((item) => item.id !== id)
   },
   editItem: (state: ItemsState, editeditem: Item) => {

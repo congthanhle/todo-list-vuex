@@ -12,7 +12,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "axios": "^1.5.1",
+    "firebase": "^10.4.0",
     "vue": "^3.3.4",
+    "vuefire": "^3.1.17",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

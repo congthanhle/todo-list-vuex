@@ -26,7 +26,7 @@ const cancelEditItem = () => {
 
 <template>
 	<tr v-if="!isEditMode">
-		<td class="text-center">{{ item.id }}</td>
+		<td class="text-center">{{  }}</td>
 		<td>{{ item.name }}</td>
 		<td class="text-center">
 			<span v-if="item.level === 0" class="label label-default">Low</span>
