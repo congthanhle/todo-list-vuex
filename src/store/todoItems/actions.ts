@@ -18,7 +18,7 @@ const actions: ActionTree<ItemsState, RootState> = {
       }
       items.push(item)
     })
-    commit('getItems', items)
+    commit('setItems', items)
   },
   addItem: async ({ commit }: { commit: Commit }, item: Item) => {
     await addDoc(itemsCollectionRef, {
@@ -38,8 +38,26 @@ const actions: ActionTree<ItemsState, RootState> = {
     })
     commit('editItem', item)
   },
-  searchItems: ({ commit }: { commit: Commit }, queryValue: string) => {
-    commit('searchItems', queryValue)
+  searchItems: async ({ commit }: { commit: Commit }, queryValue: string) => {
+    const searchQuery = queryValue.toLowerCase()
+    const originalItems: Item[] = []
+    const querySnapshot = await getDocs(itemsCollectionRef)
+    querySnapshot.forEach((doc) => {
+      const item: Item = {
+        id: doc.id,
+        name: doc.data().name,
+        level: doc.data().level
+      }
+      originalItems.push(item)
+    })
+    if (searchQuery === '') {
+      commit('setItems', originalItems)
+    } else {
+      const filteredItems = originalItems.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery)
+      )
+      commit('setItems', filteredItems)
+    }
   },
   sortItems: ({ commit }: { commit: Commit }, sortOption: string) => {
     commit('sortItems', sortOption)

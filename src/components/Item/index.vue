@@ -6,7 +6,8 @@ import type { Item } from '@store/todoItems/state';
 import store from '@store/index';
 
 const props = defineProps<{
-	item: Item
+	item: Item,
+	index: number
 }>()
 
 const isEditMode = ref(false);
@@ -26,7 +27,7 @@ const cancelEditItem = () => {
 
 <template>
 	<tr v-if="!isEditMode">
-		<td class="text-center">{{  }}</td>
+		<td class="text-center">{{ index }}</td>
 		<td>{{ item.name }}</td>
 		<td class="text-center">
 			<span v-if="item.level === 0" class="label label-default">Low</span>

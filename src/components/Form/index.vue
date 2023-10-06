@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import store from '@store/index';
-import { items } from '@/data';
 
 // Initialize the initial value for form data
 const formData = ref({
@@ -16,7 +15,6 @@ const handleSubmitForm = () => {
     const { name, level } = formData.value;
     formData.value.name = '';
     const newItem = {
-      id: items.length + 1,
       name: name,
       level: Number(level)
     }
