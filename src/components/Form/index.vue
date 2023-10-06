@@ -1,7 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import store from '@store/index';
+
+const emits = defineEmits(["handleAddFormVisible"])
 
 // Initialize the initial value for form data
 const formData = ref({
@@ -28,6 +30,7 @@ const handleSubmitForm = () => {
 // Operation to delete data on the form
 const handleClearForm = () => {
   formData.value.name = '';
+  emits("handleAddFormVisible")
 }
 
 </script>

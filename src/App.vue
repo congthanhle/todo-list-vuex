@@ -12,6 +12,7 @@ const handleToggleAddBtn = () => {
   isAddFormVisible.value = !isAddFormVisible.value;
 };
 
+
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const handleToggleAddBtn = () => {
     </div>
     <div class="row marginB10">
       <div class="col-md-offset-7 col-md-5">
-        <Form v-if="isAddFormVisible" />
+        <Form v-if="isAddFormVisible" @handleAddFormVisible="handleToggleAddBtn"/>
       </div>
     </div>
     <ListItem />
