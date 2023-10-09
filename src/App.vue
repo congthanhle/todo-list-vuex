@@ -12,7 +12,6 @@ const handleToggleAddBtn = () => {
   isAddFormVisible.value = !isAddFormVisible.value;
 };
 
-
 </script>
 
 <template>

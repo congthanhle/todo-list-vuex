@@ -2,9 +2,9 @@ import type { ActionTree, Commit } from 'vuex/types/index.js'
 import type { ItemsState, Item } from '@store/todoItems/state'
 import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc } from 'firebase/firestore'
 import type { RootState } from '@store/index'
-import { db } from '@/firebase'
+import { database } from '@/firebase'
 
-const itemsCollectionRef = collection(db, 'todos')
+const itemsCollectionRef = collection(database, 'todos')
 
 const actions: ActionTree<ItemsState, RootState> = {
   fetchItems: async ({ commit }: { commit: Commit }) => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 import type { Item } from '@/store/todoItems/state';
 import store from "@store/index"
 
