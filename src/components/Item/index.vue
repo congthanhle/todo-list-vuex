@@ -53,7 +53,7 @@ const cancelEditItem = () => {
 	padding: 0;
 	font-size: inherit;
 }
-
 .item:hover .custom-pre {
 	background-color: #f5f5f5;
-}</style>
+}
+</style>
