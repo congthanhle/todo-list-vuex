@@ -27,7 +27,9 @@ const cancelEditItem = () => {
 <template>
 	<tr v-if="!isEditMode" class="item">
 		<td class="text-center">{{ index }}</td>
-		<td><pre class="custom-pre">{{ item.name }}</pre></td>
+		<td>
+			<pre class="custom-pre">{{ item.name }}</pre>
+		</td>
 		<td class="text-center">
 			<span v-if="item.level === 0" class="label label-default">Low</span>
 			<span v-else-if="item.level === 1" class="label label-info">Medium</span>
@@ -43,15 +45,15 @@ const cancelEditItem = () => {
 
 <style scoped>
 .custom-pre {
-  white-space: pre;
-  font-family: inherit;
-  background-color: white; 
-  border: none; 
-  margin: 0; 
+	white-space: pre;
+	font-family: inherit;
+	background-color: white;
+	border: none;
+	margin: 0;
 	padding: 0;
 	font-size: inherit;
 }
-.item:hover .custom-pre{
-  background-color: #f5f5f5;
-}
-</style>
+
+.item:hover .custom-pre {
+	background-color: #f5f5f5;
+}</style>
