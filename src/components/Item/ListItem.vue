@@ -24,7 +24,7 @@ const todoItems = computed(() => store.getters.ALL_ITEMS);
         </tr>
       </thead>
       <tbody>
-        <Item v-for="(item, index) in todoItems" :key="item.id" :index="index + 1" :item=item></Item>
+        <Item v-for="(item, index) in todoItems" :key="item.id" :index="index + 1" :item=item />
       </tbody>
     </table>
   </div>

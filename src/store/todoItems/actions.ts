@@ -2,6 +2,7 @@ import type { ActionTree, Commit } from 'vuex/types/index.js'
 import type { ItemsState, Item } from '@store/todoItems/state'
 import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc } from 'firebase/firestore'
 import type { RootState } from '@store/index'
+import store from '@store/index';
 import { database } from '@/firebase'
 
 const itemsCollectionRef = collection(database, 'todos')
@@ -25,14 +26,15 @@ const actions: ActionTree<ItemsState, RootState> = {
       name: item.name,
       level: item.level
     })
-    commit('ADD_ITEM', item)
+    commit('ADD_ITEM', item);
+    await store.dispatch('FETCH_ITEMS')
   },
-  DELETE_ITEM: async ({ commit }: { commit: Commit }, id: string) => {
-    await deleteDoc(doc(itemsCollectionRef, id))
-    commit('DELETE_ITEM', id)
+  DELETE_ITEM: ({ commit }: { commit: Commit }, id: string) => {
+    deleteDoc(doc(itemsCollectionRef, id));
+    commit('DELETE_ITEM', id);
   },
-  EDIT_ITEM: async ({ commit }: { commit: Commit }, item: Item) => {
-    await updateDoc(doc(itemsCollectionRef, item.id), {
+  EDIT_ITEM: ({ commit }: { commit: Commit }, item: Item) => {
+    updateDoc(doc(itemsCollectionRef, item.id), {
       name: item.name,
       level: item.level
     })
