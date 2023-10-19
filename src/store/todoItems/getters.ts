@@ -3,7 +3,7 @@ import type { ItemsState } from '@store/todoItems/state'
 import type { RootState } from '@store/index'
 
 const getters: GetterTree<ItemsState, RootState> = {
-  allItems: (state: ItemsState) => state.items
+  ALL_ITEMS: (state: ItemsState) => state.items
 }
 
 export default getters;

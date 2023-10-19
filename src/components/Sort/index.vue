@@ -6,7 +6,7 @@ const sortOption = ref("")
 
 const handleSortOption = (option: string) => {
 	sortOption.value = option;
-	store.dispatch("sortItems", sortOption.value)
+	store.dispatch("SORT_ITEMS", sortOption.value)
 };
 
 </script>

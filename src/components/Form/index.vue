@@ -19,7 +19,7 @@ const handleSubmitForm = () => {
       name: name,
       level: Number(level)
     }
-    store.dispatch("addItem", newItem);
+    store.dispatch("ADD_ITEM", newItem);
   }
   else {
     alert("Please enter item name");

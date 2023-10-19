@@ -12,7 +12,7 @@ const props = defineProps<{
 const isEditMode = ref(false);
 // Handle the action of pressing the delete button
 const handleDeleteClick = () => {
-	store.dispatch("deleteItem", props.item.id)
+	store.dispatch("DELETE_ITEM", props.item.id)
 }
 // Turn on editing mode for the current item
 const handleEditClick = () => {
@@ -25,9 +25,9 @@ const cancelEditItem = () => {
 </script>
 
 <template>
-	<tr v-if="!isEditMode">
+	<tr v-if="!isEditMode" class="item">
 		<td class="text-center">{{ index }}</td>
-		<td>{{ item.name }}</td>
+		<td><pre class="custom-pre">{{ item.name }}</pre></td>
 		<td class="text-center">
 			<span v-if="item.level === 0" class="label label-default">Low</span>
 			<span v-else-if="item.level === 1" class="label label-info">Medium</span>
@@ -41,4 +41,17 @@ const cancelEditItem = () => {
 	<ItemEdit :item="item" :index="index" @cancelEditedItem="cancelEditItem" v-else />
 </template>
 
-<style scoped></style>
+<style scoped>
+.custom-pre {
+  white-space: pre;
+  font-family: inherit;
+  background-color: white; 
+  border: none; 
+  margin: 0; 
+	padding: 0;
+	font-size: inherit;
+}
+.item:hover .custom-pre{
+  background-color: #f5f5f5;
+}
+</style>

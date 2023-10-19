@@ -7,7 +7,7 @@ import { database } from '@/firebase'
 const itemsCollectionRef = collection(database, 'todos')
 
 const actions: ActionTree<ItemsState, RootState> = {
-  fetchItems: async ({ commit }: { commit: Commit }) => {
+  FETCH_ITEMS: async ({ commit }: { commit: Commit }) => {
     const items: Item[] = []
     const querySnapshot = await getDocs(itemsCollectionRef)
     querySnapshot.forEach((doc) => {
@@ -18,27 +18,27 @@ const actions: ActionTree<ItemsState, RootState> = {
       }
       items.push(item)
     })
-    commit('setItems', items)
+    commit('SET_ITEMS', items)
   },
-  addItem: async ({ commit }: { commit: Commit }, item: Item) => {
+  ADD_ITEM: async ({ commit }: { commit: Commit }, item: Item) => {
     await addDoc(itemsCollectionRef, {
       name: item.name,
       level: item.level
     })
-    commit('addItem', item)
+    commit('ADD_ITEM', item)
   },
-  deleteItem: async ({ commit }: { commit: Commit }, id: string) => {
+  DELETE_ITEM: async ({ commit }: { commit: Commit }, id: string) => {
     await deleteDoc(doc(itemsCollectionRef, id))
-    commit('deleteItem', id)
+    commit('DELETE_ITEM', id)
   },
-  editItem: async ({ commit }: { commit: Commit }, item: Item) => {
+  EDIT_ITEM: async ({ commit }: { commit: Commit }, item: Item) => {
     await updateDoc(doc(itemsCollectionRef, item.id), {
       name: item.name,
       level: item.level
     })
-    commit('editItem', item)
+    commit('EDIT_ITEM', item)
   },
-  searchItems: async ({ commit }: { commit: Commit }, queryValue: string) => {
+  SEARCH_ITEMS: async ({ commit }: { commit: Commit }, queryValue: string) => {
     const searchQuery = queryValue.toLowerCase()
     const originalItems: Item[] = []
     const querySnapshot = await getDocs(itemsCollectionRef)
@@ -51,16 +51,16 @@ const actions: ActionTree<ItemsState, RootState> = {
       originalItems.push(item)
     })
     if (searchQuery === '') {
-      commit('setItems', originalItems)
+      commit('SET_ITEMS', originalItems)
     } else {
       const filteredItems = originalItems.filter((item) =>
         item.name.toLowerCase().includes(searchQuery)
       )
-      commit('setItems', filteredItems)
+      commit('SET_ITEMS', filteredItems)
     }
   },
-  sortItems: ({ commit }: { commit: Commit }, sortOption: string) => {
-    commit('sortItems', sortOption)
+  SORT_ITEMS: ({ commit }: { commit: Commit }, sortOption: string) => {
+    commit('SORT_ITEMS', sortOption)
   }
 }
 

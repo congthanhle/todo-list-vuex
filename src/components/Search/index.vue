@@ -4,11 +4,11 @@ import store from '@/store';
 const searchQuery = ref('');
 
 const handleSearchQueryChange = () => {
-	store.dispatch("searchItems", searchQuery.value);
+	store.dispatch("SEARCH_ITEMS", searchQuery.value);
 };
 const handleClearQuery = () => {
 	searchQuery.value = ""
-	store.dispatch("searchItems", searchQuery.value);
+	store.dispatch("SEARCH_ITEMS", searchQuery.value);
 };
 </script>
 

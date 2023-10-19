@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.0",
     "axios": "^1.5.1",
     "firebase": "^10.4.0",
     "vue": "^3.3.4",

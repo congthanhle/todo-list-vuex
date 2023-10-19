@@ -23,7 +23,7 @@ const handleSaveClick = () => {
 		name,
 		level,
 	}
-	store.dispatch("editItem", editedItem);
+	store.dispatch("EDIT_ITEM", editedItem);
 	handleCancelClick();
 }
 

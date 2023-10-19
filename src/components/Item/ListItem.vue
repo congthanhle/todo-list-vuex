@@ -4,11 +4,10 @@ import store from '@store/index';
 import Item from "@components/Item/index.vue"
 
 onMounted(() => {
-	store.dispatch("fetchItems");
+	store.dispatch("FETCH_ITEMS");
 })
 
-const todoItems = computed(() => store.getters.allItems);
-
+const todoItems = computed(() => store.getters.ALL_ITEMS);
 
 </script>
 
