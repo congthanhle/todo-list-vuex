@@ -40,9 +40,9 @@ const handleCancelClick = () => {
     </td>
     <td class="text-center">
       <select class="form-control" v-model="formData.level">
-        <option :value=0>Low</option>
-        <option :value=1>Medium</option>
-        <option :value=2>High</option>
+        <option value=0>Low</option>
+        <option value=1>Medium</option>
+        <option value=2>High</option>
       </select>
     </td>
     <td>
