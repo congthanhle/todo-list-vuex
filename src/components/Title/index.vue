@@ -1,7 +1,7 @@
 <template>
-	<div class="page-header">
-		<h2>Project 02 - ToDo List <small>Vuex</small></h2>
-	</div>
+  <div class="page-header">
+    <h2>Project 02 - ToDo List <small>Vuex</small></h2>
+  </div>
 </template>
 
 <script setup lang="ts">
