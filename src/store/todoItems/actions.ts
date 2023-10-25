@@ -1,9 +1,9 @@
 import type { ActionTree, Commit } from 'vuex/types/index.js'
 import type { ItemsState, Item } from '@store/todoItems/state'
-import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc, Timestamp } from 'firebase/firestore'
 import type { RootState } from '@store/index'
 import store from '@store/index';
-import { database } from '@/firebase'
+import { database } from '@/firebase';
 
 const itemsCollectionRef = collection(database, 'todos')
 
@@ -15,16 +15,19 @@ const actions: ActionTree<ItemsState, RootState> = {
       const item: Item = {
         id: doc.id,
         name: doc.data().name,
-        level: doc.data().level
+        level: doc.data().level,
+        timestamp: doc.data().timestamp
       }
       items.push(item)
     })
+    console.log(items)
     commit('SET_ITEMS', items)
   },
   ADD_ITEM: async ({ commit }: { commit: Commit }, item: Item) => {
     await addDoc(itemsCollectionRef, {
       name: item.name,
-      level: item.level
+      level: item.level,
+      createdAt: new Date().getTime()
     })
     commit('ADD_ITEM', item);
     await store.dispatch('FETCH_ITEMS')
@@ -48,7 +51,8 @@ const actions: ActionTree<ItemsState, RootState> = {
       const item: Item = {
         id: doc.id,
         name: doc.data().name,
-        level: doc.data().level
+        level: doc.data().level,
+        timestamp: doc.data().timestamp
       }
       originalItems.push(item)
     })

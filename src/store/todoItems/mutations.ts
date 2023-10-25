@@ -3,11 +3,12 @@ import type { ItemsState, Item } from '@store/todoItems/state'
 
 const mutations: MutationTree<ItemsState> = {
   SET_ITEMS: (state: ItemsState, items: Item[]) => {
-    state.items = items
+    state.items = items.sort((currItem, nextItem) => {
+      return nextItem.level - currItem.level
+    })
   },
   ADD_ITEM: (state: ItemsState, item: Item) => {
-    state.items.push(item)
-    
+    state.items.unshift(item)
   },
   DELETE_ITEM: (state: ItemsState, id: string) => {
     state.items = state.items.filter((item) => item.id !== id)

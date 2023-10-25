@@ -2,6 +2,7 @@ export interface Item {
   id: string
   name: string
   level: number
+  timestamp: number
 }
 
 export interface ItemsState {
